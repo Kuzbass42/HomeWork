@@ -2,6 +2,13 @@ package javaSE01.t06;
 
 import java.util.Arrays;
 
+/**
+ *Class NotePad provides storage and API to deal with notes.
+ *
+ * <p>Class NotePad contains an array, which stores Note's. Also NotePad provides API to create, modify, view
+ * and delete notes</p>
+ * @author Mikhail Sigarev
+ */
 public class NotePad {
 
     private static final int ARRAY_STEP = 8;
@@ -9,15 +16,35 @@ public class NotePad {
     private Note[] notes;
     private int    index;
 
+    /**
+     *Instatiation of NotePad class.
+     *
+     * </p>Instatiation of NotePad class with an array of Note's. Default dimension of this array is {@value #ARRAY_STEP}</p>
+     */
     public NotePad() {
 
         this(ARRAY_STEP);
     }
 
+    /**
+     *Instatiation of NotePad class.
+     *
+     * <p>Instatiation of NotePad class with an array of Note's</p>
+     *
+     *@param arraySize Dimension of the array of Notes.
+     */
     public NotePad(int arraySize) {
         this.notes = new Note[arraySize];
     }
 
+    /**
+     * Addition of a new Note.
+     *
+     * <p>Addition of a new Note. Id of Note is automatically increments {@link #index}</p>
+     *
+     *@param title Title of a new Note
+     *@param body Body of a new Note
+     */
     public Note addNote(String title, String body) {
         Note ret = null;
 
@@ -34,6 +61,14 @@ public class NotePad {
         return ret;
     }
 
+    /**
+     * Checking of a possibility to add a new Note.
+     *
+     * <p>In case of an array is not full returns is true</p>
+     * <p>In case of an array is full, but it's dimension less than max value of Integer returns is true and
+     * array is copied into another array in bigger dimension (pace equals {@link #ARRAY_STEP})</p>
+     * <p>In case of array is full and it's dimension equals max value of Integer returns is false</p>
+     */
     private boolean canAdd() {
 
         if (index >= notes.length && index < Integer.MAX_VALUE) {
@@ -50,6 +85,11 @@ public class NotePad {
         return (id > 0 && id <= index) ? notes[id - 1] : null;
     }
 
+    /**
+     * Modify a Note.
+     *
+     * <p>Modifying a Note with number {@link Note#id}</p>
+     */
     public Note editNote(int id, String newTitle, String newBody) {
         Note note = getNote(id);
 
@@ -63,6 +103,11 @@ public class NotePad {
         return note;
     }
 
+    /**
+     * Delete a Note.
+     *
+     * <p>Deleting a Note with number {@link Note#id}</p>
+     */
     public void deleteNote(int id) {
         if (id > 0 && id <= index) {
             for (int i = id; i < index; i++) {
