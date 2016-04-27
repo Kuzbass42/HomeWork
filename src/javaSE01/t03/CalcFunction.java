@@ -19,6 +19,7 @@ public class CalcFunction {
     }
 
     static double function(double x){
+
         return Math.tan(2 * x) - 3;
     }
 }
