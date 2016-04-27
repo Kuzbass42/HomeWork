@@ -22,4 +22,9 @@ public class CalcFunction {
 
         return Math.tan(2 * x) - 3;
     }
+
+    public static void main(String[] args) {
+        CalcFunction calcFunction = new CalcFunction(1, 10, 0.5);
+        calcFunction.calcData();
+    }
 }
