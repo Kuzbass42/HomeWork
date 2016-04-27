@@ -110,8 +110,10 @@ public class NotePad {
      */
     public void deleteNote(int id) {
         if (id > 0 && id <= index) {
+            Note note;
+
             for (int i = id; i < index; i++) {
-                Note note = getNote(i + 1);
+                note = getNote(i + 1);
                 notes[i - 1] = note;
             }
 
